@@ -1,0 +1,100 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+\documentclass[journal]{IEEEtran}
+\usepackage[a5paper, margin=10mm, onecolumn]{geometry}
+%\usepackage{lmodern} % Ensure lmodern is loaded for pdflatex
+\usepackage{tfrupee} % Include tfrupee package
+
+\setlength{\headheight}{1cm} % Set the height of the header box
+\setlength{\headsep}{0mm}     % Set the distance between the header box and the top of the text
+
+\usepackage{gvv-book}
+\usepackage{gvv}
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{txfonts}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{gensymb}
+\usepackage{comment}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{tkz-euclide} 
+\usepackage{listings}
+% \usepackage{gvv}                                        
+\def\inputGnumericTable{}                                 
+\usepackage[latin1]{inputenc}                                
+\usepackage{color}                                            
+\usepackage{array}                                            
+\usepackage{longtable}                                       
+\usepackage{calc}                                             
+\usepackage{multirow}                                         
+\usepackage{hhline}                                           
+\usepackage{ifthen}                                           
+\usepackage{lscape}
+\begin{document}
+
+\bibliographystyle{IEEEtran}
+\vspace{3cm}
+
+\title{11.16.2.2.7}
+\author{EE24BTECH11058 - P.Shiny Diavajna}
+% \maketitle
+% \newpage
+% \bigskip
+{\let\newpage\relax\maketitle}
+
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+\setlength{\intextsep}{10pt} % Space between text and floats
+
+
+\numberwithin{equation}{enumi}
+\numberwithin{figure}{enumi}
+\renewcommand{\thetable}{\theenumi}
+\textbf{Question:}\\
+A die is thrown\\
+D: The event that a number less than 4 appears.\\
+E: The event that an even number greater than 4 appears.\\
+Find the probability of the event $D-E$.\\
+
+
+\textbf{Solution:}\\
+Probabilities of the given events 
+\begin{align}
+         P\brak{D}&=\frac{1}{2}\\
+         P\brak{E}&=\frac{1}{6}\\
+\end{align}  
+It can be observed that, D and E are disjoint events . Therefore, 
+\begin{align}
+     P\brak{DE}&=0
+\end{align}
+
+We,know that 
+\begin{align}
+        P\brak{D-E}&= P\brak{D}-P\brak{DE}\\
+        P\brak{D-E}&= \frac{1}{2} - 0\\
+        P\brak{D-E}&= \frac{1}{2}
+\end{align}
+
+
+The code simulates rolling a fair six-sided die $10^5$ times and calculates the probabilities of three events:
+\begin{itemize}
+    \item D(rolling a number less than 4)
+    \item E(rolling an even number greater than 4)
+    \item D-E(numbers in D but not in E)
+\end{itemize}
+It then visualizes these probabilities in the below plot.         
+
+\newpage
+\textbf{Plot:}\\
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=\columnwidth]{figs/fig.png}
+\end{figure}
+
+\end{document}
