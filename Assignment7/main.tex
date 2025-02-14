@@ -58,43 +58,164 @@
 \renewcommand{\thetable}{\theenumi}
 \textbf{Question:}\\
 A die is thrown\\
-D: The event that a number less than 4 appears.\\
-E: The event that an even number greater than 4 appears.\\
-Find the probability of the event $D-E$.\\
+A: The event that a number less than 7 appears.\\
+B: The event that a number greater than 7 appears.\\
+Find $P\brak{A+B}$
 
 
 \textbf{Solution:}\\
-Probabilities of the given events 
+For 2 Boolean variables $A$ and $B$, the axioms of Boolean Algebra are defined as:
 \begin{align}
-         P\brak{D}&=\frac{1}{2}\\
-         P\brak{E}&=\frac{1}{6}\\
-\end{align}  
-It can be observed that, D and E are disjoint events . Therefore, 
+	A + A^\prime &= 1\\
+	A + A &= A\\
+	AB &= BA\\
+	A + B &= B + A\\
+	AA^\prime &= 0\\
+	\Pr\brak{1} &= 1\\
+	\Pr\brak{A + B} &= \Pr\brak{A} + \Pr\brak{B}, \text{ if } \Pr\brak{AB} = 0
+\end{align}
+Using these axioms, we will try to prove that
 \begin{align}
-     P\brak{DE}&=0
+	\Pr\brak{A + B} = \Pr\brak{A} + \Pr\brak{B} - \Pr\brak{AB}
+\end{align}
+We will start by representing $A$ and $B$ as:
+\begin{align}
+	A &= AB + AB^\prime\\
+	B &= AB + A^\prime B\\
+	\Pr\brak{A} &= \Pr\brak{AB} + \Pr\brak{AB^\prime}\\
+	\Pr\brak{B} &= \Pr\brak{AB} + \Pr\brak{A^\prime B}
+\end{align}
+On adding $\brak{0.9}$ and $\brak{0.10}$,
+\begin{align}
+	A + B &= AB + AB + AB^\prime + A^\prime B\\
+	A + B &= AB + AB^\prime + A^\prime B\\
+	\Pr\brak{A + B} &= \Pr\brak{AB + AB^\prime + A^\prime B}\\
+	\Pr\brak{A + B} &= \Pr\brak{AB} + \Pr\brak{AB^\prime} + \Pr\brak{A^\prime B}\\
+	\Pr\brak{A + B} &= \Pr\brak{AB} + \Pr\brak{A} - \Pr\brak{AB} + \Pr\brak{B} - \Pr\brak{AB}\\
+	\implies \Pr\brak{A + B} &= \Pr\brak{A} + \Pr\brak{B} - \Pr\brak{AB}
 \end{align}
 
-We,know that 
 \begin{align}
-        P\brak{D-E}&= P\brak{D}-P\brak{DE}\\
-        P\brak{D-E}&= \frac{1}{2} - 0\\
-        P\brak{D-E}&= \frac{1}{2}
+    P\brak{A}=1\\
+    P\brak{B}=0\\
+    P\brak{AB}=0
+\end{align}
+Using the values of $\Pr\brak{A}, \Pr\brak{B}$ and $\Pr\brak{AB}$,
+\begin{align}
+	\Pr\brak{A + B} &= 1 + 0- 0\\
+	\Pr\brak{A + B} &= 1
+\end{align}
+Therefore, the value of $\Pr\brak{A + B}$ is $1$.\\\\   
+
+\textbf{Simulated Solution:\\}
+Let $X_1$ be an indicator random variable of the event $A$.\\
+$X_1$ is defined as:
+\begin{align}
+	X_1 =
+	\begin{cases}
+		1 ,& A\\
+		0 ,& A^\prime\\
+	\end{cases}
+\end{align}
+Let $X_2$ be the indicator random variable of the event $B$.\\
+$X_2$ is defined as:
+\begin{align}
+	X_2 =
+	\begin{cases}
+		1 ,& B\\
+		0 ,& B^\prime\\
+	\end{cases}
+\end{align}
+Let $X_3$ be the indicator random variable of the event $AB$.\\
+$X_3$ is defined as:
+\begin{align}
+	X_3 =
+	\begin{cases}
+		1 ,& AB\\
+		0 ,& \brak{AB}^\prime\\
+	\end{cases}
+\end{align}
+The PMF of the random variable $X_1$ is:
+\begin{align}
+	p_{X_1}\brak{n} =
+	\begin{cases}
+		p_1 ,& n = 1\\
+		1 - p_1 ,& n = 0
+	\end{cases}
+\end{align}
+The PMF of the random variable $X_2$ is:
+\begin{align}
+	p_{X_2}\brak{n} =
+	\begin{cases}
+		p_2 ,& n = 1\\
+		1 - p_2 ,& n = 0
+	\end{cases}
+\end{align}
+The PMF of the random variable $X_3$ is:
+\begin{align}
+	p_{X_3}\brak{n} =
+	\begin{cases}
+		p_3 ,& n = 1\\
+		1 - p_3 ,& n = 0
+	\end{cases}
+\end{align}
+where,
+\begin{align}
+	p_1 &= 1\\
+	p_2 &= 0\\
+	p_3 &= 0\\
+\end{align}
+Let $Y$ be the random variable which is defined as follows:
+\begin{align}
+	Y = X_1 + X_2 - X_3
+\end{align}
+But we know that $X_3$ can never be $0$ when $X_1$ and $X_2$ are $1$ and vice versa.\\
+So, $Y$ is another Indicator Random variable whose PMF is defined as:
+\begin{align}
+	p_{Y}\brak{n} =
+	\begin{cases}
+		p ,& n = 1\\
+		1 - p ,& n = 0
+	\end{cases}
+\end{align}
+From $\brak{34}$,
+\begin{align}
+	E\brak{Y} &= E\brak{X_1 + X_2 - X_3}\\
+	E\brak{Y} &= E\brak{X_1} + E\brak{X_2} - E\brak{X_3}\\
+	1.\brak{p} + 0.\brak{1 - p} &= 1.\brak{p_1} + 0.\brak{1 - p_1} + 1.\brak{p_2} + 0.\brak{1 - p_2} - 1.\brak{p_3} - 0.\brak{1 - p_3}\\
+	p &= p_1 + p_2 - p_3
+\end{align}
+Through our definition, we know that,
+\begin{align}
+	\Pr\brak{A} = p_1\\
+	\Pr\brak{B} = p_2\\
+	\Pr\brak{AB} = p_3
+\end{align}
+Therefore, by comparison of the axiom
+\begin{align}
+	\Pr\brak{A + B} = \Pr\brak{A} + \Pr\brak{B} - \Pr\brak{AB}
+\end{align}
+and the equation $\brak{0.39}$,
+\begin{align}
+	p &= \Pr\brak{A + B}\\
+	\Pr\brak{A + B} &= 1 + 0 - 0\\
+	\implies \Pr\brak{A + B} &= 1
 \end{align}
 
+\pagebreak
+Below is the plot for the simulation of the probabilities, where the grey stems represent the theoretical probabilities and the coloured stems represent the simulated ones.\\
+Through observation in the last stem, we have proved through the code that
+\begin{align}
+	\Pr\brak{A + B} = \Pr\brak{A} + \Pr\brak{B} - \Pr\brak{AB}
+\end{align}
 
-The code simulates rolling a fair six-sided die $10^5$ times and calculates the probabilities of three events:
-\begin{itemize}
-    \item D(rolling a number less than 4)
-    \item E(rolling an even number greater than 4)
-    \item D-E(numbers in D but not in E)
-\end{itemize}
-It then visualizes these probabilities in the below plot.         
-
-\newpage
 \textbf{Plot:}\\
-\begin{figure}[ht]
+\begin{figure}[h]
    \centering
-   \includegraphics[width=\columnwidth]{figs/fig.png}
+   \includegraphics[width=\columnwidth]{figs/figure1.png}
 \end{figure}
+
+Acknowledgement:
+https://github.com/Akshara778/EE1003/tree/main/assignment-9
 
 \end{document}
