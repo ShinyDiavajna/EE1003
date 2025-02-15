@@ -63,7 +63,7 @@ B: The event that a number greater than 7 appears.\\
 Find $P\brak{A+B}$
 
 
-\textbf{Solution:}\\
+\textbf{Theoretical Solution:}\\
 For 2 Boolean variables $A$ and $B$, the axioms of Boolean Algebra are defined as:
 \begin{align}
 	A + A^\prime &= 1\\
@@ -95,11 +95,54 @@ On adding $\brak{0.9}$ and $\brak{0.10}$,
 	\implies \Pr\brak{A + B} &= \Pr\brak{A} + \Pr\brak{B} - \Pr\brak{AB}
 \end{align}
 
+\newpage
+Now, to obtain the probability of $\Pr\brak{A}$ and $\Pr\brak{B}$, We use the PMF for the throw of die \\
+
+The probability mass function (PMF) for the throw of a fair six-sided die is:
 \begin{align}
-    P\brak{A}=1\\
-    P\brak{B}=0\\
-    P\brak{AB}=0
+    P_X\brak{x} = \begin{cases}
+        \frac{1}{6} & \text{for } x = 1, 2, 3, 4, 5, 6 \\
+        0 & \text{otherwise}
+    \end{cases}
 \end{align}
+The cumulative distribution function (CDF) gives the probability of rolling a number less than or equal to some integer $x$.
+\begin{align}
+    F_X\brak{x} = \Pr\brak{X \leq x} = \begin{cases}
+        0 & \text{for } x < 1 \\
+        \frac{x}{6} & \text{for } x = 1, 2, 3, 4, 5, 6 \\
+        1 & \text{for } x > 6
+    \end{cases}
+\end{align}
+Thus, the probability of event $A$ can be calculated as follows:
+\begin{align}
+    \Pr\brak{A} &= \Pr\brak{X < 7}\\
+    &=F_X\brak{7} - P_X\brak{7}\\
+    &=1 - 0 \\
+    \implies \Pr \brak{A}&= 1
+\end{align}
+Using the axiom of Boolean Algebra $E+E^{\prime}=1$ for some event $E$ in the sample space
+\begin{align}
+    B+B^{\prime}&=1\\
+    \Pr\brak{B}+ \Pr\brak{B^{\prime}}&=1\\
+    \Pr\brak{B} &= \Pr\brak{X > 7}\\
+     &=1 - \Pr\brak{X \leq 7} \\
+     &= 1 - F_X\brak{7}\\
+     \implies \Pr\brak{B} = 1 - 1 &= 0
+\end{align}
+
+$A$ and $B$ can be observed to be mutually exclusive events, as no number $x$ can be lesser than and greater than 7 at the same time.
+Hence, we can say that:
+\begin{align}
+    \Pr\brak{AB} = 0
+\end{align}
+
+Therefore,
+\begin{align}
+    \Pr\brak{A}=1\\
+    \Pr\brak{B}=0\\
+    \Pr\brak{AB}=0
+\end{align}
+
 Using the values of $\Pr\brak{A}, \Pr\brak{B}$ and $\Pr\brak{AB}$,
 \begin{align}
 	\Pr\brak{A + B} &= 1 + 0- 0\\
@@ -195,27 +238,33 @@ Therefore, by comparison of the axiom
 \begin{align}
 	\Pr\brak{A + B} = \Pr\brak{A} + \Pr\brak{B} - \Pr\brak{AB}
 \end{align}
-and the equation $\brak{0.39}$,
+and the equation $\brak{0.52}$,
 \begin{align}
 	p &= \Pr\brak{A + B}\\
 	\Pr\brak{A + B} &= 1 + 0 - 0\\
 	\implies \Pr\brak{A + B} &= 1
 \end{align}
 
-\pagebreak
+\newpage 
+\textbf{Plots:}\\
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{figs/figure2.png}
+	\caption{Plot for PMF of die roll}
+\end{figure}
+
 Below is the plot for the simulation of the probabilities, where the grey stems represent the theoretical probabilities and the coloured stems represent the simulated ones.\\
 Through observation in the last stem, we have proved through the code that
 \begin{align}
 	\Pr\brak{A + B} = \Pr\brak{A} + \Pr\brak{B} - \Pr\brak{AB}
 \end{align}
 
-\textbf{Plot:}\\
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=\columnwidth]{figs/figure1.png}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{figs/figure1.png}
+        \caption{Plot for simulation Probabilities}
 \end{figure}
 
-Acknowledgement:
-https://github.com/Akshara778/EE1003/tree/main/assignment-9
 
 \end{document}
